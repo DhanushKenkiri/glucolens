@@ -1,1 +1,1 @@
-Glucolens is a project for diabetic patients to mintor their data after the checkup
+Glucolens is a project to analyse the kagle given dataset.
