@@ -1,1 +1,1 @@
-Glu
+Glucolens is a project for diabetic patients to mintor their data after the checkup
