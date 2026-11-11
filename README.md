@@ -80,6 +80,8 @@ npm run e2e:static           # serves it like GitHub Pages and drives Edge throu
 
 **Deployment** is automatic: `.github/workflows/pages.yml` runs on every push to `main` — Go and frontend tests, lint, the static build — and publishes `frontend/dist-pages` to the `gh-pages` branch, which GitHub Pages serves (Settings → Pages → Deploy from a branch → `gh-pages`, folder `/`).
 
+To deploy from your own machine instead (for example while GitHub Actions is unavailable on the account), run `npm run deploy:pages`: it builds the site and force-pushes it to `gh-pages`.
+
 ## Checks
 
 ```bash

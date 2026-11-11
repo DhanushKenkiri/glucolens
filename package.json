@@ -14,7 +14,8 @@
     "lint": "cd backend && go vet ./... && cd ../frontend && npm run lint",
     "e2e": "npm run build && npm --prefix frontend run e2e",
     "build:pages": "node scripts/build-pages.mjs",
-    "e2e:static": "node scripts/build-pages.mjs && npm --prefix frontend run e2e:static"
+    "e2e:static": "node scripts/build-pages.mjs && npm --prefix frontend run e2e:static",
+    "deploy:pages": "node scripts/deploy-pages.mjs"
   },
   "devDependencies": {
     "concurrently": "^10.0.7"
