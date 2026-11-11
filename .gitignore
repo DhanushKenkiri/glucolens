@@ -1,0 +1,22 @@
+# Secrets: keep API keys out of git (example.env is the template)
+.env
+.env.*
+!example.env
+
+# Generated
+backend/data/dataset.json
+backend/data/*.tmp
+backend/bin/
+frontend/dist/
+node_modules/
+*.log
+
+# Test output
+test-results/
+playwright-report/
+.DS_Store
+frontend/e2e/output/
+frontend/e2e/output-static/
+frontend/dist-pages/
+frontend/.pages-stage/
+frontend/.pages-keep/

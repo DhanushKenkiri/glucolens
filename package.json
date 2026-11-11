@@ -1,0 +1,22 @@
+{
+  "name": "glucolens",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Understand your checkup: AI search, insights and risk explorer over 100,000 checkups.",
+  "scripts": {
+    "setup": "npm install && npm --prefix frontend install && cd backend && go mod download",
+    "dev": "concurrently -k -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "cd backend && go run ./cmd/server",
+    "dev:web": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build && cd backend && go build -o bin/glucolens-server ./cmd/server",
+    "start": "cd backend && go run ./cmd/server",
+    "test": "cd backend && go test ./... && cd ../frontend && npm test",
+    "lint": "cd backend && go vet ./... && cd ../frontend && npm run lint",
+    "e2e": "npm run build && npm --prefix frontend run e2e",
+    "build:pages": "node scripts/build-pages.mjs",
+    "e2e:static": "node scripts/build-pages.mjs && npm --prefix frontend run e2e:static"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
+}

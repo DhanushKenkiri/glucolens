@@ -1,3 +1,0 @@
-module glucolens
-
-go 1.27.3

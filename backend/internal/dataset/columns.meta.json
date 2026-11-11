@@ -1,0 +1,327 @@
+{
+  "dataset": {
+    "name": "Checkup dataset",
+    "description": "100,000 anonymised checkup records with lifestyle, lab and diabetes outcome data."
+  },
+  "sections": [
+    { "id": "demographics", "label": "Demographics", "description": "Age, background and circumstances." },
+    { "id": "lifestyle", "label": "Lifestyle", "description": "Daily habits: activity, diet, sleep, screens, alcohol and smoking." },
+    { "id": "history", "label": "Medical history", "description": "Family history and past diagnoses." },
+    { "id": "body", "label": "Body", "description": "Body size and shape." },
+    { "id": "heart", "label": "Heart & blood pressure", "description": "Blood pressure and resting heart rate." },
+    { "id": "lipids", "label": "Cholesterol & lipids", "description": "Blood fats measured in the lipid panel." },
+    { "id": "glucose", "label": "Glucose & insulin", "description": "Blood sugar and insulin markers." },
+    { "id": "outcomes", "label": "Diabetes outcomes", "description": "Diagnosis, stage and the dataset's risk score." }
+  ],
+  "columns": {
+    "age": {
+      "label": "Age", "short": "Age", "unit": "years", "section": "demographics", "role": "demographic",
+      "description": "Age in years at the checkup.",
+      "groups": [
+        { "label": "18–34", "max": 35 },
+        { "label": "35–49", "min": 35, "max": 50 },
+        { "label": "50–64", "min": 50, "max": 65 },
+        { "label": "65+", "min": 65 }
+      ]
+    },
+    "gender": {
+      "label": "Gender", "short": "Gender", "section": "demographics", "role": "demographic",
+      "description": "Gender recorded at the checkup.",
+      "order": ["Female", "Male", "Other"], "reference": "Female"
+    },
+    "ethnicity": {
+      "label": "Ethnicity", "short": "Ethnicity", "section": "demographics", "role": "demographic",
+      "description": "Self-reported ethnicity.",
+      "order": ["White", "Hispanic", "Black", "Asian", "Other"], "reference": "White"
+    },
+    "education_level": {
+      "label": "Education", "short": "Education", "section": "demographics", "role": "demographic",
+      "description": "Highest level of education completed.",
+      "order": ["No formal", "Highschool", "Graduate", "Postgraduate"], "ordered": true, "reference": "Highschool"
+    },
+    "income_level": {
+      "label": "Income level", "short": "Income", "section": "demographics", "role": "demographic",
+      "description": "Household income bracket.",
+      "order": ["Low", "Lower-Middle", "Middle", "Upper-Middle", "High"], "ordered": true, "reference": "Middle"
+    },
+    "employment_status": {
+      "label": "Employment", "short": "Employment", "section": "demographics", "role": "demographic",
+      "description": "Employment status at the checkup.",
+      "order": ["Employed", "Unemployed", "Retired", "Student"], "reference": "Employed"
+    },
+    "smoking_status": {
+      "label": "Smoking", "short": "Smoking", "section": "lifestyle", "role": "lifestyle",
+      "description": "Whether the person has never smoked, used to smoke or smokes now.",
+      "order": ["Never", "Former", "Current"], "ordered": true, "reference": "Never"
+    },
+    "alcohol_consumption_per_week": {
+      "label": "Alcohol", "short": "Alcohol", "unit": "drinks/week", "section": "lifestyle", "role": "lifestyle",
+      "description": "Alcoholic drinks per week.",
+      "groups": [
+        { "label": "None", "max": 0.5 },
+        { "label": "1–2", "min": 0.5, "max": 2.5 },
+        { "label": "3–5", "min": 2.5, "max": 5.5 },
+        { "label": "6+", "min": 5.5 }
+      ]
+    },
+    "physical_activity_minutes_per_week": {
+      "label": "Physical activity", "short": "Activity", "unit": "min/week", "section": "lifestyle", "role": "lifestyle",
+      "description": "Minutes of physical activity per week. The WHO recommends at least 150 minutes of moderate activity.",
+      "bands": [
+        { "label": "Below 150 min", "max": 150, "tone": "watch" },
+        { "label": "150 min or more", "min": 150, "tone": "ok" }
+      ],
+      "groups": [
+        { "label": "Under 60", "max": 60 },
+        { "label": "60–149", "min": 60, "max": 150 },
+        { "label": "150–299", "min": 150, "max": 300 },
+        { "label": "300+", "min": 300 }
+      ]
+    },
+    "diet_score": {
+      "label": "Diet quality score", "short": "Diet score", "unit": "/10", "section": "lifestyle", "role": "lifestyle",
+      "description": "Diet quality on the dataset's 0–10 scale. Higher means a healthier diet.",
+      "groups": [
+        { "label": "Under 4", "max": 4 },
+        { "label": "4–5.9", "min": 4, "max": 6 },
+        { "label": "6–7.9", "min": 6, "max": 8 },
+        { "label": "8+", "min": 8 }
+      ]
+    },
+    "sleep_hours_per_day": {
+      "label": "Sleep", "short": "Sleep", "unit": "h/day", "section": "lifestyle", "role": "lifestyle",
+      "description": "Average hours of sleep per day. Adults are advised to get 7–9 hours.",
+      "bands": [
+        { "label": "Under 7 h", "max": 7, "tone": "watch" },
+        { "label": "7–9 h", "min": 7, "max": 9.05, "tone": "ok" },
+        { "label": "Over 9 h", "min": 9.05, "tone": "watch" }
+      ]
+    },
+    "screen_time_hours_per_day": {
+      "label": "Screen time", "short": "Screens", "unit": "h/day", "section": "lifestyle", "role": "lifestyle",
+      "description": "Average hours per day spent on screens.",
+      "groups": [
+        { "label": "Under 4 h", "max": 4 },
+        { "label": "4–5.9 h", "min": 4, "max": 6 },
+        { "label": "6–7.9 h", "min": 6, "max": 8 },
+        { "label": "8 h+", "min": 8 }
+      ]
+    },
+    "family_history_diabetes": {
+      "label": "Family history of diabetes", "short": "Family history", "section": "history", "role": "history",
+      "description": "Whether a close family member has diabetes.",
+      "levels": ["No", "Yes"], "reference": "No"
+    },
+    "hypertension_history": {
+      "label": "History of hypertension", "short": "Hypertension", "section": "history", "role": "history",
+      "description": "Whether the person has been diagnosed with high blood pressure.",
+      "levels": ["No", "Yes"], "reference": "No"
+    },
+    "cardiovascular_history": {
+      "label": "Cardiovascular history", "short": "Heart disease", "section": "history", "role": "history",
+      "description": "Whether the person has a history of heart or blood-vessel disease.",
+      "levels": ["No", "Yes"], "reference": "No"
+    },
+    "bmi": {
+      "label": "BMI", "short": "BMI", "unit": "kg/m²", "section": "body", "role": "body",
+      "description": "Weight relative to height. Under 18.5 is underweight, 18.5–24.9 healthy, 25–29.9 overweight and 30 or above obesity (WHO).",
+      "reference": "Healthy",
+      "bands": [
+        { "label": "Underweight", "max": 18.5, "tone": "watch" },
+        { "label": "Healthy", "min": 18.5, "max": 25, "tone": "ok" },
+        { "label": "Overweight", "min": 25, "max": 30, "tone": "watch" },
+        { "label": "Obesity", "min": 30, "tone": "alert" }
+      ]
+    },
+    "waist_to_hip_ratio": {
+      "label": "Waist-to-hip ratio", "short": "Waist/hip", "section": "body", "role": "body",
+      "description": "Waist circumference divided by hip circumference. The WHO treats 0.90 or more in men and 0.85 or more in women as abdominal obesity.",
+      "bands": [
+        { "label": "Below 0.90", "max": 0.9, "tone": "ok", "when": { "column": "gender", "equals": "Male" } },
+        { "label": "0.90 or more", "min": 0.9, "tone": "alert", "when": { "column": "gender", "equals": "Male" } },
+        { "label": "Below 0.85", "max": 0.85, "tone": "ok", "when": { "column": "gender", "equals": "Female" } },
+        { "label": "0.85 or more", "min": 0.85, "tone": "alert", "when": { "column": "gender", "equals": "Female" } }
+      ],
+      "groups": [
+        { "label": "Under 0.80", "max": 0.8 },
+        { "label": "0.80–0.84", "min": 0.8, "max": 0.85 },
+        { "label": "0.85–0.89", "min": 0.85, "max": 0.9 },
+        { "label": "0.90+", "min": 0.9 }
+      ]
+    },
+    "systolic_bp": {
+      "label": "Systolic blood pressure", "short": "Systolic BP", "unit": "mmHg", "section": "heart", "role": "vitals",
+      "description": "The top blood-pressure number, measured while the heart beats. Under 120 is normal, 120–129 elevated, 130–139 stage 1 and 140 or above stage 2 hypertension range (AHA). A diagnosis needs repeated readings.",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 120, "tone": "ok" },
+        { "label": "Elevated", "min": 120, "max": 130, "tone": "watch" },
+        { "label": "Stage 1", "min": 130, "max": 140, "tone": "alert" },
+        { "label": "Stage 2", "min": 140, "tone": "alert" }
+      ]
+    },
+    "diastolic_bp": {
+      "label": "Diastolic blood pressure", "short": "Diastolic BP", "unit": "mmHg", "section": "heart", "role": "vitals",
+      "description": "The bottom blood-pressure number, measured between beats. Under 80 is normal, 80–89 stage 1 and 90 or above stage 2 hypertension range (AHA).",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 80, "tone": "ok" },
+        { "label": "Stage 1", "min": 80, "max": 90, "tone": "alert" },
+        { "label": "Stage 2", "min": 90, "tone": "alert" }
+      ]
+    },
+    "heart_rate": {
+      "label": "Resting heart rate", "short": "Heart rate", "unit": "bpm", "section": "heart", "role": "vitals",
+      "description": "Resting beats per minute. 60–100 is the typical adult range; fit people often sit below 60.",
+      "reference": "60–100",
+      "bands": [
+        { "label": "Below 60", "max": 60, "tone": "info" },
+        { "label": "60–100", "min": 60, "max": 101, "tone": "ok" },
+        { "label": "Above 100", "min": 101, "tone": "alert" }
+      ]
+    },
+    "cholesterol_total": {
+      "label": "Total cholesterol", "short": "Total chol.", "unit": "mg/dL", "section": "lipids", "role": "lipids",
+      "description": "All cholesterol in the blood. Under 200 is desirable, 200–239 borderline high and 240 or above high.",
+      "reference": "Desirable",
+      "bands": [
+        { "label": "Desirable", "max": 200, "tone": "ok" },
+        { "label": "Borderline high", "min": 200, "max": 240, "tone": "watch" },
+        { "label": "High", "min": 240, "tone": "alert" }
+      ]
+    },
+    "hdl_cholesterol": {
+      "label": "HDL cholesterol", "short": "HDL", "unit": "mg/dL", "section": "lipids", "role": "lipids",
+      "description": "\"Good\" cholesterol that helps clear other cholesterol. Below 40 (men) or 50 (women) counts as low; 60 or above is protective.",
+      "reference": "40–59",
+      "bands": [
+        { "label": "Low", "max": 40, "tone": "alert" },
+        { "label": "40–59", "min": 40, "max": 60, "tone": "ok" },
+        { "label": "60 or above", "min": 60, "tone": "ok" },
+        { "label": "Low", "max": 40, "tone": "alert", "when": { "column": "gender", "equals": "Male" } },
+        { "label": "40–59", "min": 40, "max": 60, "tone": "ok", "when": { "column": "gender", "equals": "Male" } },
+        { "label": "60 or above", "min": 60, "tone": "ok", "when": { "column": "gender", "equals": "Male" } },
+        { "label": "Low", "max": 50, "tone": "alert", "when": { "column": "gender", "equals": "Female" } },
+        { "label": "50–59", "min": 50, "max": 60, "tone": "ok", "when": { "column": "gender", "equals": "Female" } },
+        { "label": "60 or above", "min": 60, "tone": "ok", "when": { "column": "gender", "equals": "Female" } }
+      ]
+    },
+    "ldl_cholesterol": {
+      "label": "LDL cholesterol", "short": "LDL", "unit": "mg/dL", "section": "lipids", "role": "lipids",
+      "description": "\"Bad\" cholesterol that builds up in arteries. Under 100 is optimal, 100–129 near optimal, 130–159 borderline high, 160–189 high and 190 or above very high.",
+      "reference": "Optimal",
+      "bands": [
+        { "label": "Optimal", "max": 100, "tone": "ok" },
+        { "label": "Near optimal", "min": 100, "max": 130, "tone": "ok" },
+        { "label": "Borderline high", "min": 130, "max": 160, "tone": "watch" },
+        { "label": "High", "min": 160, "max": 190, "tone": "alert" },
+        { "label": "Very high", "min": 190, "tone": "alert" }
+      ]
+    },
+    "triglycerides": {
+      "label": "Triglycerides", "short": "Triglycerides", "unit": "mg/dL", "section": "lipids", "role": "lipids",
+      "description": "A type of blood fat. Under 150 is normal, 150–199 borderline high and 200 or above high.",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 150, "tone": "ok" },
+        { "label": "Borderline high", "min": 150, "max": 200, "tone": "watch" },
+        { "label": "High", "min": 200, "tone": "alert" }
+      ]
+    },
+    "glucose_fasting": {
+      "label": "Fasting glucose", "short": "Fasting glucose", "unit": "mg/dL", "section": "glucose", "role": "marker",
+      "description": "Blood sugar after at least 8 hours without food. Under 100 is normal, 100–125 is the prediabetes range and 126 or above is the diabetes range (ADA).",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 100, "tone": "ok" },
+        { "label": "Prediabetes range", "min": 100, "max": 126, "tone": "watch" },
+        { "label": "Diabetes range", "min": 126, "tone": "alert" }
+      ]
+    },
+    "glucose_postprandial": {
+      "label": "Glucose after eating", "short": "Post-meal glucose", "unit": "mg/dL", "section": "glucose", "role": "marker",
+      "description": "Blood sugar about two hours after eating or a glucose drink. Under 140 is normal, 140–199 suggests impaired glucose tolerance and 200 or above is the diabetes range.",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 140, "tone": "ok" },
+        { "label": "Impaired tolerance", "min": 140, "max": 200, "tone": "watch" },
+        { "label": "Diabetes range", "min": 200, "tone": "alert" }
+      ]
+    },
+    "insulin_level": {
+      "label": "Insulin", "short": "Insulin", "unit": "µU/mL", "section": "glucose", "role": "marker",
+      "description": "Insulin in the blood, usually measured fasting. Higher values can point to insulin resistance. Reference ranges differ between labs, so no bands are shown."
+    },
+    "hba1c": {
+      "label": "HbA1c", "short": "HbA1c", "unit": "%", "section": "glucose", "role": "marker",
+      "description": "Average blood sugar over the past 2–3 months. Below 5.7% is normal, 5.7–6.4% is the prediabetes range and 6.5% or above is the diabetes range (ADA).",
+      "reference": "Normal",
+      "bands": [
+        { "label": "Normal", "max": 5.7, "tone": "ok" },
+        { "label": "Prediabetes range", "min": 5.7, "max": 6.5, "tone": "watch" },
+        { "label": "Diabetes range", "min": 6.5, "tone": "alert" }
+      ]
+    },
+    "diabetes_risk_score": {
+      "label": "Diabetes risk score", "short": "Risk score", "section": "outcomes", "role": "outcome",
+      "description": "A risk score supplied with the dataset; higher means higher estimated risk. How it is calculated is not documented, so treat it as indicative."
+    },
+    "diabetes_stage": {
+      "label": "Diabetes stage", "short": "Stage", "section": "outcomes", "role": "outcome",
+      "description": "Diabetes status recorded at the checkup.",
+      "order": ["No Diabetes", "Pre-Diabetes", "Type 1", "Type 2", "Gestational"], "reference": "No Diabetes"
+    },
+    "diagnosed_diabetes": {
+      "label": "Diagnosed diabetes", "short": "Diagnosed", "section": "outcomes", "role": "outcome",
+      "description": "Whether the person has been diagnosed with diabetes of any type.",
+      "levels": ["No", "Yes"], "reference": "No"
+    }
+  },
+  "outcomes": [
+    {
+      "id": "diagnosed_diabetes", "label": "Diagnosed diabetes",
+      "description": "Diagnosed with diabetes of any type.",
+      "outcome": { "column": "diagnosed_diabetes", "equals": ["Yes"] }
+    },
+    {
+      "id": "type2_diabetes", "label": "Type 2 diabetes",
+      "description": "Diabetes stage recorded as Type 2.",
+      "outcome": { "column": "diabetes_stage", "equals": ["Type 2"] }
+    },
+    {
+      "id": "hba1c_diabetes_range", "label": "HbA1c in diabetes range",
+      "description": "HbA1c of 6.5% or higher.",
+      "outcome": { "column": "hba1c", "min": 6.5 }
+    },
+    {
+      "id": "hba1c_prediabetes_or_higher", "label": "HbA1c 5.7% or higher",
+      "description": "HbA1c in the prediabetes range or above.",
+      "outcome": { "column": "hba1c", "min": 5.7 }
+    },
+    {
+      "id": "hypertension", "label": "Hypertension",
+      "description": "Has a history of high blood pressure.",
+      "outcome": { "column": "hypertension_history", "equals": ["Yes"] }
+    },
+    {
+      "id": "cardiovascular", "label": "Cardiovascular disease",
+      "description": "Has a history of heart or blood-vessel disease.",
+      "outcome": { "column": "cardiovascular_history", "equals": ["Yes"] }
+    },
+    {
+      "id": "high_systolic", "label": "Systolic BP 130 or higher",
+      "description": "Systolic blood pressure in the stage 1 range or above.",
+      "outcome": { "column": "systolic_bp", "min": 130 }
+    },
+    {
+      "id": "obesity", "label": "Obesity (BMI 30+)",
+      "description": "BMI of 30 or higher.",
+      "outcome": { "column": "bmi", "min": 30 }
+    },
+    {
+      "id": "high_ldl", "label": "High LDL (160+)",
+      "description": "LDL cholesterol of 160 mg/dL or higher.",
+      "outcome": { "column": "ldl_cholesterol", "min": 160 }
+    }
+  ]
+}
